@@ -14,7 +14,9 @@ namespace ClassWorkPromotionals.Classes
                              string description,
                              int version,
                              DateTime releaseDate,
-                             ProgramRenderTypes programRenderType)
+                             ProgramRenderTypes programRenderType,
+                             int memoryUsage,
+                             int processorUsage)
         {
             _name = name;
             _company = company;
@@ -22,6 +24,8 @@ namespace ClassWorkPromotionals.Classes
             _version = version;
             _releaseDate = releaseDate;
             _programRenderType = programRenderType;
+            _memoryUsage = memoryUsage;
+            _processorUsage = processorUsage;
         }
         protected string _name;
         protected string _company;
@@ -31,6 +35,7 @@ namespace ClassWorkPromotionals.Classes
         protected ProgramRenderTypes _programRenderType;
         protected int _memoryUsage;
         protected int _processorUsage;
+
         public ResourcesUsage ResourcesUsage
         {
             get

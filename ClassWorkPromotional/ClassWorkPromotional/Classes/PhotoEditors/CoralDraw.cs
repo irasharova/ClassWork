@@ -8,13 +8,19 @@ namespace ClassWorkPromotionals.Classes.PhotoEditors
 {
     public class CorelDraw: GenericProgram
     {
-        public CorelDraw(int version, DateTime releaseDate, ProgramRenderTypes programRenderType) :
+        public CorelDraw(int version, 
+            DateTime releaseDate,
+            ProgramRenderTypes programRenderType,
+            int memoryUsage,
+            int processorUsage) :
             base("Corel Draw", 
-                "Corel Corporation",
-                "CorelDRAW Graphics Suite 2018 Graphic design software",
-                version,
-                releaseDate,
-                programRenderType)
+                 "Corel Corporation",
+                 "CorelDRAW Graphics Suite 2018 Graphic design software",
+                 version,
+                 releaseDate,
+                 programRenderType,
+                 memoryUsage,
+                 processorUsage)
         {
         }
 

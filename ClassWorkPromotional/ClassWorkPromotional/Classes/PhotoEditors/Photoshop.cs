@@ -8,13 +8,19 @@ namespace ClassWorkPromotionals.Classes.PhotoEditors
 {
     class Photoshop : GenericProgram
     {
-        public Photoshop(int version, DateTime releaseDate, ProgramRenderTypes programRenderType) :
-           base("Adobe Photoshop",
-               "Adobe",
-               "Adobe Photoshop is a raster graphics editor developed and published by Adobe Systems for macOS and Windows.",
-               version,
-               releaseDate,
-               programRenderType)
+        public Photoshop(int version,
+            DateTime releaseDate,
+            ProgramRenderTypes programRenderType,
+            int memoryUsage,
+            int processorUsage) :
+            base("Adobe Photoshop",
+                 "Adobe",
+                 "Adobe Photoshop is a raster graphics editor developed and published by Adobe Systems for macOS and Windows.",
+                 version,
+                 releaseDate,
+                 programRenderType,
+                 memoryUsage,
+                 processorUsage)
         {
         }
         public string Name { get => _name; set => _name = value; }

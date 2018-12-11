@@ -8,13 +8,19 @@ namespace ClassWorkPromotionals.Classes.PhotoEditors
 {
     class Instagram : GenericProgram
     {
-        public Instagram(int version, DateTime releaseDate, ProgramRenderTypes programRenderType) :
+        public Instagram(int version, 
+            DateTime releaseDate, 
+            ProgramRenderTypes programRenderType,
+            int memoryUsage,
+            int processorUsage) :
             base("Instagram",
-                "INSTAGRAM",
-                "Instagram (also known as IG[9]) is a photo and video-sharing social networking service owned by Facebook, Inc. It was created by Kevin Systrom and Mike Krieger, and launched in October 2010",
-                version,
-                releaseDate,
-                programRenderType)
+                 "INSTAGRAM",
+                 "Instagram (also known as IG[9]) is a photo and video-sharing social networking service owned by Facebook, Inc. It was created by Kevin Systrom and Mike Krieger, and launched in October 2010",
+                 version,
+                 releaseDate,
+                 programRenderType,
+                 memoryUsage,
+                 processorUsage)
         {
         }
         public string Name { get => _name; set => _name = value; }
