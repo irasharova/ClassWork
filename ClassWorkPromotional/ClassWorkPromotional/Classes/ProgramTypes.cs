@@ -11,6 +11,6 @@ namespace ClassWorkPromotionals.Classes
         RasterGraphics,
         VectorGraphics,
         CombineVectorAndRaster,
-        CachedRater
+        CachedRaster
     }
 }

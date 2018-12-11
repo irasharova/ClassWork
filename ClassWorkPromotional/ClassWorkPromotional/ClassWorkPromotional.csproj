@@ -55,6 +55,11 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Classes\MaxResources.cs" />
+    <Compile Include="Classes\ResurcesUsage.cs" />
+    <Compile Include="Data\ProgramsData.cs" />
+    <Compile Include="UI\MainVindowsViewModel.cs" />
+    <Compile Include="UI\ProgramWithHistoryViewModel.cs" />
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>

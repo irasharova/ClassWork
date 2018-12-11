@@ -8,12 +8,13 @@ namespace ClassWorkPromotionals.Classes.PhotoEditors
 {
     class Paint : GenericProgram
     {
-        public Paint(int version, DateTime releaseDate) :
+        public Paint(int version, DateTime releaseDate, ProgramRenderTypes programRenderType) :
           base("Microsoft Paint",
               "Microsoft",
               "Simple raster graphics editor that has been included with all versions of Microsoft Windows",
               version,
-              releaseDate)
+              releaseDate,
+              programRenderType)
         {
         }
         public string Name { get => _name; set => _name = value; }
@@ -21,6 +22,6 @@ namespace ClassWorkPromotionals.Classes.PhotoEditors
         public string Description { get => _description; set => _description = value; }
         public int Version { get => _version; set => _version = value; }
         public DateTime ReleaseDate { get => _releaseDate; set => _releaseDate = value; }
-        public ProgramRenderTypes ProgramType { get => _programType; set => _programType = value; }
+        public ProgramRenderTypes ProgramType { get => _programRenderType; set => _programRenderType = value; }
     }
 }

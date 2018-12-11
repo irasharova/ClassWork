@@ -8,12 +8,13 @@ namespace ClassWorkPromotionals.Classes.PhotoEditors
 {
     class MovaviPhotoEditor : GenericProgram
     {
-        public MovaviPhotoEditor(int version, DateTime releaseDate) :
+        public MovaviPhotoEditor(int version, DateTime releaseDate, ProgramRenderTypes programRenderType) :
            base("Movavi Photo Editor",
                "MOVAVI",
                "Easy-to-Use Photo Editing Software",
                version,
-               releaseDate)
+               releaseDate,
+               programRenderType)
         {
         }
         public string Name { get => _name; set => _name = value; }
@@ -21,6 +22,6 @@ namespace ClassWorkPromotionals.Classes.PhotoEditors
         public string Description { get => _description; set => _description = value; }
         public int Version { get => _version; set => _version = value; }
         public DateTime ReleaseDate { get => _releaseDate; set => _releaseDate = value; }
-        public ProgramRenderTypes ProgramType { get => _programType; set => _programType = value; }
+        public ProgramRenderTypes ProgramType { get => _programRenderType; set => _programRenderType = value; }
     }
 }

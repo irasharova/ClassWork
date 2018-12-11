@@ -8,12 +8,13 @@ namespace ClassWorkPromotionals.Classes.PhotoEditors
 {
     class Instagram : GenericProgram
     {
-        public Instagram(int version, DateTime releaseDate) :
+        public Instagram(int version, DateTime releaseDate, ProgramRenderTypes programRenderType) :
             base("Instagram",
                 "INSTAGRAM",
                 "Instagram (also known as IG[9]) is a photo and video-sharing social networking service owned by Facebook, Inc. It was created by Kevin Systrom and Mike Krieger, and launched in October 2010",
                 version,
-                releaseDate)
+                releaseDate,
+                programRenderType)
         {
         }
         public string Name { get => _name; set => _name = value; }
@@ -21,6 +22,6 @@ namespace ClassWorkPromotionals.Classes.PhotoEditors
         public string Description { get => _description; set => _description = value; }
         public int Version { get => _version; set => _version = value; }
         public DateTime ReleaseDate { get => _releaseDate; set => _releaseDate = value; }
-        public ProgramRenderTypes ProgramType { get => _programType; set => _programType = value; }
+        public ProgramRenderTypes ProgramType { get => _programRenderType; set => _programRenderType = value; }
     }
 }
