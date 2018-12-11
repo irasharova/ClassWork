@@ -63,6 +63,13 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Classes\GenericProgram.cs" />
+    <Compile Include="Classes\PhotoEditors\CoralDraw.cs" />
+    <Compile Include="Classes\PhotoEditors\Instagram.cs" />
+    <Compile Include="Classes\PhotoEditors\MovaviPhotoEditor.cs" />
+    <Compile Include="Classes\PhotoEditors\Paint.cs" />
+    <Compile Include="Classes\PhotoEditors\Photoshop.cs" />
+    <Compile Include="Classes\ProgramTypes.cs" />
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
