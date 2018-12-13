@@ -16,7 +16,8 @@ namespace ClassWorkPromotionals.Classes
                              DateTime releaseDate,
                              ProgramRenderTypes programRenderType,
                              int memoryUsage,
-                             int processorUsage)
+                             int processorUsage,
+                             string image)
         {
             _name = name;
             _company = company;
@@ -26,7 +27,9 @@ namespace ClassWorkPromotionals.Classes
             _programRenderType = programRenderType;
             _memoryUsage = memoryUsage;
             _processorUsage = processorUsage;
+            _image = image;
         }
+        protected string _image;
         protected string _name;
         protected string _company;
         protected string _description;
@@ -36,18 +39,8 @@ namespace ClassWorkPromotionals.Classes
         protected int _memoryUsage;
         protected int _processorUsage;
 
-        public ResourcesUsage ResourcesUsage
+        public ResourcesUsage CalculateResourceUsage(int photoAmount)
         {
-            get
-            { 
-                return CalculateResurceUsage();
-            }
-        }
-
-        private ResourcesUsage CalculateResurceUsage()
-        {
-            var PhotoAmount = 12;
-
             var CurrentMemory = 0;
             var CurrentProcessor = 0;
 
@@ -59,42 +52,43 @@ namespace ClassWorkPromotionals.Classes
                     break;
 
                 case ProgramRenderTypes.VectorGraphics:
-                    CurrentMemory = PhotoAmount * _memoryUsage;
-                    CurrentProcessor = PhotoAmount * _processorUsage;
+                    CurrentMemory = photoAmount * _memoryUsage;
+                    CurrentProcessor = photoAmount * _processorUsage;
                     break;
 
                 case ProgramRenderTypes.CombineVectorAndRaster:
-                    if (PhotoAmount < 10)
+                    if (photoAmount < 10)
                     {
-                        CurrentMemory = PhotoAmount * _memoryUsage + 10;
-                        CurrentProcessor = PhotoAmount * _processorUsage + 2;
+                        CurrentMemory = photoAmount * _memoryUsage + 10;
+                        CurrentProcessor = photoAmount * _processorUsage + 2;
                     }
                     else
                     {
-                        CurrentMemory = PhotoAmount * _memoryUsage - 5;
-                        CurrentProcessor = PhotoAmount * _processorUsage - 2;
+                        CurrentMemory = photoAmount * _memoryUsage - 5;
+                        CurrentProcessor = photoAmount * _processorUsage - 2;
                     }
                     break;
 
                 case ProgramRenderTypes.CachedRaster:
-                    if ((PhotoAmount * _memoryUsage) > Convert.ToInt32(MaxResources.MaxMemory / 2))
+                    if ((photoAmount * _memoryUsage) > Convert.ToInt32(MaxResources.MaxMemory / 2))
                     {
                         CurrentMemory = Convert.ToInt32((MaxResources.MaxMemory * 0.5));
                     }
                     else
                     {
-                        CurrentMemory = PhotoAmount * _memoryUsage;
+                        CurrentMemory = photoAmount * _memoryUsage;
                     }
-                    if ((PhotoAmount * _processorUsage) > Convert.ToInt32(MaxResources.MaxProcessor / 4))
+                    if ((photoAmount * _processorUsage) > Convert.ToInt32(MaxResources.MaxProcessor / 4))
                     {
                         CurrentProcessor = Convert.ToInt32((MaxResources.MaxProcessor / 4));
                     }
                     else
                     {
-                        CurrentProcessor = PhotoAmount * _processorUsage;
+                        CurrentProcessor = photoAmount * _processorUsage;
                     }
                     break;
             }
+
             return new ResourcesUsage()
             {
                 Memory = CurrentMemory,

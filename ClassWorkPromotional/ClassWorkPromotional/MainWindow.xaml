@@ -3,25 +3,101 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
         xmlns:local="clr-namespace:ClassWorkPromotional"
         mc:Ignorable="d"
-        Title="MainWindow" Height="600" Width="1200" FontFamily="Roboto">
+        Title="MainWindow" Height="600" Width="1200" FontFamily="Roboto"
+        xmlns:VM="clr-namespace:ClassWorkPromotional.UI" FontSize="16">
+    <Window.DataContext>
+        <VM:MainWindowViewModel />
+    </Window.DataContext>
     <Grid Background="White">
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="150*"/>
-            <ColumnDefinition Width="201*"/>
-            <ColumnDefinition Width="245*"/>
+            <ColumnDefinition Width="299*"/>
+            <ColumnDefinition Width="299*"/>
+            <ColumnDefinition Width="294*"/>
+            <ColumnDefinition Width="300*"/>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
             <RowDefinition Height="59*"/>
-            <RowDefinition Height="510*"/>
+            <RowDefinition Height="66*"/>
+            <RowDefinition Height="445*"/>
         </Grid.RowDefinitions>
-        <ListBox Name="ProgramList" HorizontalAlignment="Left" ItemsSource="{Binding PhotoEditors}" DisplayMemberPath="{Binding Name}" Width="300" Background="#FFE6E6E6" Grid.Row="1"/>
-        <Grid HorizontalAlignment="Left" Height="510" VerticalAlignment="Top" Width="490" Grid.Column="2" Grid.Row="1"/>
-        <Grid DataContext="{Binding ElementName=ProgramList, Path=SelectedItem}" Grid.Column="1" HorizontalAlignment="Left" Height="510" Grid.Row="1" VerticalAlignment="Top" Width="402"/>
+        <ListBox Name="ProgramList" ItemsSource="{Binding PhotoEditors}" DisplayMemberPath="{Binding Name}" Background="#FFE6E6E6" Grid.Row="1" VerticalContentAlignment="Stretch" HorizontalContentAlignment="Stretch" Margin="10" SelectedIndex="0" Grid.RowSpan="2">
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="1*"/>
+                            <ColumnDefinition Width="3*"/>
+                        </Grid.ColumnDefinitions>
+                        <Image Source="{Binding Image}" Width="70"></Image>
+                        <StackPanel Grid.Column="1" Orientation="Vertical">
+                            <Label Content="{Binding Name}" HorizontalAlignment="Center" />
+                            <Label Content="{Binding Company}" HorizontalAlignment="Center" />
+                        </StackPanel>
+                    </Grid>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
+        <Grid DataContext="{Binding ElementName=ProgramList, Path=SelectedItem}" Grid.Column="2" Grid.Row="2" Margin="10,10,10,56" Background="#FFE6E6E6" Grid.ColumnSpan="2">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="1*"/>
+                <RowDefinition Height="1*"/>
+                <RowDefinition Height="1*"/>
+                <RowDefinition Height="1*"/>
+                <RowDefinition Height="1*"/>
+                <RowDefinition Height="1*"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="1*"/>
+            </Grid.ColumnDefinitions>
+            <DatePicker SelectedDate="{Binding Start}" Margin="14,11,13,12" Grid.Column="1" Grid.Row="4" VerticalContentAlignment="Stretch" HorizontalContentAlignment="Stretch" Padding="0" SelectedDateFormat="Short"/>
+            <DatePicker SelectedDate="{Binding End}" Grid.Column="3" Margin="13,10,14,11" Grid.Row="4" VerticalContentAlignment="Stretch"/>
+            <Label Content="Початкова дата" Margin="0,0,0,1" Padding="0" Grid.Row="4" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
+            <Label Content="Кінцева дата" Grid.Column="2" Margin="0,0,0,1" Grid.Row="4" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
+            <Label Content="Оперативна пам'ять (Мб)" Grid.ColumnSpan="2" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Margin="0"/>
+            <Label Content="Процессор (%)" Grid.Column="2" Grid.ColumnSpan="2" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Margin="0"/>
+            <Label Content="{Binding ResourceUsage.Memory, UpdateSourceTrigger=PropertyChanged}" Grid.Row="2" Grid.ColumnSpan="2" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Padding="5"/>
+            <Label Content="{Binding ResourceUsage.Processor, UpdateSourceTrigger=PropertyChanged}" Grid.Column="2" Grid.Row="2" Grid.ColumnSpan="2" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Padding="5"/>
+            <Label Content="Дійсна версія програми:" Grid.ColumnSpan="4" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Margin="0" Grid.Row="1"/>
+            <Label Content="Середнє за проміжок часу:" Grid.Row="3" Grid.ColumnSpan="4" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Margin="3,2,0,0"/>
+            <Label Content="{Binding AverageResourceUsage.Memory, UpdateSourceTrigger=PropertyChanged}" Grid.Row="5" Grid.ColumnSpan="2" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Padding="5" Margin="0"/>
+            <Label Content="{Binding AverageResourceUsage.Processor, UpdateSourceTrigger=PropertyChanged}" Grid.Row="5" Grid.ColumnSpan="2" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Padding="5" Grid.Column="2"/>
+        </Grid>
+        <Grid DataContext="{Binding ElementName=ProgramList, Path=SelectedItem}" Grid.Column="1" Grid.Row="1" Margin="10" Grid.RowSpan="2">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="161*"/>
+                <RowDefinition Height="94*"/>
+            </Grid.RowDefinitions>
+            <ScrollViewer>
+                <StackPanel DataContext="{Binding ElementName=ProgramList, Path=SelectedItem}">
+                    <Image Source="{Binding Image}" Width="200"></Image>
+                    <Label Content="{Binding Name}" Padding="10" VerticalContentAlignment="Center" HorizontalContentAlignment="Center"/>
+                    <Label Content="{Binding Company}" Padding="10" VerticalContentAlignment="Center" HorizontalContentAlignment="Center"/>
+                    <TextBlock TextWrapping="Wrap" Text="{Binding Description}" Padding="10"/>
+                </StackPanel>
+            </ScrollViewer>
+            <ListBox Name="ProgramHistory" ItemsSource="{Binding History}" Grid.Row="1" Margin="5" SelectedIndex="0">
+                <ListBox.ItemTemplate>
+                    <DataTemplate>
+                        <StackPanel Orientation="Horizontal">
+                            <Label Content="{Binding ReleaseDate}" />
+                            <Label Content="{Binding Version}"/>
+                            <Label Content="{Binding ProgramType}"/>
+                        </StackPanel>
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
+            </ListBox>
+        </Grid>
         <Label Content="Назва Фоторедактору" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" />
-        <Label Content="Детальна Інформація" Grid.Column="1" Margin="0,-5,0,0" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
-        <Label Content="Використання Ресурсів" Grid.Column="2" Margin="0,-5,0,0" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
+        <Label Content="Детальна Інформація" Grid.Column="1" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
+        <Label Content="Використання Ресурсів" Grid.Column="2" Margin="0,0,0,1" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Grid.Row="1" Grid.ColumnSpan="2"/>
+        <Label Content="Кількість фото (Розмір задачі)" Grid.Column="2" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Padding="0,0,0,4"/>
+        <xctk:IntegerUpDown Minimum="0" MaxHeight="50" Name="PhotoAmountControl" Value="{Binding ElementName=ProgramList,Path=SelectedItem.PhotoAmount, Mode=TwoWay}" Grid.Column="3" HorizontalAlignment="Center" VerticalAlignment="Center" Width="100" Height="23" Margin="100,18" DefaultValue="10"/>
 
     </Grid>
 </Window>

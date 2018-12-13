@@ -8,11 +8,11 @@ using System.Threading.Tasks;
 
 namespace ClassWorkPromotional.UI
 {
-    public class MainVindowViewModel
+    public class MainWindowViewModel
     {
-        public MainVindowViewModel()
+        public MainWindowViewModel()
         {
-            ProgramsData.GetProgramsList().GroupBy(x=>x.)
+            PhotoEditors = ProgramsData.GetProgramsViewModelList();
         }
         public List<ProgramWithHistoryViewModel> PhotoEditors { get; set; }
     }

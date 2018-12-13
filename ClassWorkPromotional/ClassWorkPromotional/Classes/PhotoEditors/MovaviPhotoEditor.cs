@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ClassWorkPromotional.Classes.PhotoEditors;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -6,28 +7,31 @@ using System.Threading.Tasks;
 
 namespace ClassWorkPromotionals.Classes.PhotoEditors
 {
-    class MovaviPhotoEditor : GenericProgram
+    class MovaviPhotoEditor : GenericProgram, IPhotoEditor
     {
         public MovaviPhotoEditor(int version, 
             DateTime releaseDate,
             ProgramRenderTypes programRenderType,
             int memoryUsage,
             int processorUsage) :
-           base("Movavi Photo Editor",
-                "MOVAVI",
-                "Easy-to-Use Photo Editing Software",
-                version,
-                releaseDate,
-                programRenderType,
-                memoryUsage,
-                processorUsage)
-        {
-        }
-        public string Name { get => _name; set => _name = value; }
-        public string Company { get => _company; set => _company = value; }
-        public string Description { get => _description; set => _description = value; }
-        public int Version { get => _version; set => _version = value; }
-        public DateTime ReleaseDate { get => _releaseDate; set => _releaseDate = value; }
-        public ProgramRenderTypes ProgramType { get => _programRenderType; set => _programRenderType = value; }
+            base("Movavi Photo Editor",
+                 "MOVAVI",
+                 "Easy-to-Use Photo Editing Software",
+                 version,
+                 releaseDate,
+                 programRenderType,
+                 memoryUsage,
+                 processorUsage,
+                 "/Data/Images/movavi.jpg")
+            {
+            }
+
+        public string Name { get => _name; }
+        public string Company { get => _company; }
+        public string Description { get => _description; }
+        public string Image { get => _image; }
+        public int Version { get => _version; }
+        public DateTime ReleaseDate { get => _releaseDate; }
+        public ProgramRenderTypes ProgramType { get => _programRenderType; }
     }
 }

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ClassWorkPromotional.Classes.PhotoEditors;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -6,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace ClassWorkPromotionals.Classes.PhotoEditors
 {
-    class Paint : GenericProgram
+    class Paint : GenericProgram, IPhotoEditor
     {
         public Paint(int version, 
             DateTime releaseDate, 
@@ -20,14 +21,17 @@ namespace ClassWorkPromotionals.Classes.PhotoEditors
                  releaseDate,
                  programRenderType,
                  memoryUsage,
-                 processorUsage)
-        {
-        }
-        public string Name { get => _name; set => _name = value; }
-        public string Company { get => _company; set => _company = value; }
-        public string Description { get => _description; set => _description = value; }
-        public int Version { get => _version; set => _version = value; }
-        public DateTime ReleaseDate { get => _releaseDate; set => _releaseDate = value; }
-        public ProgramRenderTypes ProgramType { get => _programRenderType; set => _programRenderType = value; }
+                 processorUsage,
+                 "/Data/Images/paint.jpg")
+            {
+            }
+
+        public string Name { get => _name; }
+        public string Company { get => _company; }
+        public string Description { get => _description; }
+        public string Image { get => _image; }
+        public int Version { get => _version; }
+        public DateTime ReleaseDate { get => _releaseDate; }
+        public ProgramRenderTypes ProgramType { get => _programRenderType; }
     }
 }
